@@ -8,6 +8,6 @@ build&test:
   stage: build
   script:
     - mvn dependency:go-offline
-    - mvn test
+    - mvn package
 
 
