@@ -14,13 +14,13 @@ public class PageBase {
     //Variaveis globlais
     protected WebDriverWait wait = null;
     protected WebDriver driver = null;
-    protected JavascriptExecutor javaScript = null;
+    protected JavascriptExecutor javaScriptExecutor = null;
 
     //Construtor
     public PageBase(){
         wait = new WebDriverWait (DriverFactory.INSTANCE, GlobalParameters.TIMEOUT_DEFAULT);
         driver = DriverFactory.INSTANCE;
-        javaScript = (JavascriptExecutor) driver;
+        javaScriptExecutor = (JavascriptExecutor) driver;
     }
 
     //Custom Actions
@@ -30,7 +30,7 @@ public class PageBase {
 
         while (timeOut.getTime() <= GlobalParameters.TIMEOUT_DEFAULT)
         {
-            String documentState = javaScript.executeScript("return document.readyState").toString();
+            String documentState = javaScriptExecutor.executeScript("return document.readyState").toString();
             if (documentState.equals("complete")){
                 timeOut.stop();
                 break;
@@ -44,6 +44,14 @@ public class PageBase {
         WebElement element = driver.findElement(locator);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         return element;
+    }
+
+    //Função usada para acessar os elementos que estão dentro de um #shadow-root
+    //Ex:  WebElement root = driver.findElement(By.tagName("driver-app-shell"))---> elemento onde se encontra o shadow-root
+    //     WebElement shadowRoot = expandShadowRootElement(root); ----> pegando os elementos que estão dentro do shadow-root
+    protected WebElement expandShadowRootElement(By locator) {
+        WebElement shadowRootElement = (WebElement) javaScriptExecutor.executeScript("return arguments[0].shadowRoot", waitForElement(locator));
+        return shadowRootElement;
     }
 
     protected WebElement waitForElementDisabled(By locator){
@@ -190,24 +198,24 @@ public class PageBase {
     //Javascrip actions
     protected void SendKeysJavaScript(By locator, String value){
         WebElement element = waitForElement(locator);
-        javaScript.executeScript("arguments[0].value='" + value + "';", element);
+        javaScriptExecutor.executeScript("arguments[0].value='" + value + "';", element);
         ExtentReportUtils.addTestInfo(3, "PARAMETER: " + value);
     }
 
     protected void ClickJavaScript(By locator){
         WebElement element = waitForElement(locator);
-        javaScript.executeScript("arguments[0].click();", element);
+        javaScriptExecutor.executeScript("arguments[0].click();", element);
         ExtentReportUtils.addTestInfo(3, "");
     }
 
     protected void ScrollToElementJavaScript(By locator){
         WebElement element = waitForElement(locator);
-        javaScript.executeScript("arguments[0].scrollIntoView(true);", element);
+        javaScriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
         ExtentReportUtils.addTestInfo(3, "");
     }
 
     protected void ScrollToTop(){
-        javaScript.executeScript("window.scrollTo(0, 0);");
+        javaScriptExecutor.executeScript("window.scrollTo(0, 0);");
         ExtentReportUtils.addTestInfo(3, "");
     }
 
@@ -223,7 +231,7 @@ public class PageBase {
     }
 
     public void openNewTab(){
-        javaScript.executeScript("window.open();");
+        javaScriptExecutor.executeScript("window.open();");
         ExtentReportUtils.addTestInfo(2, "");
     }
     public void closeTab(){

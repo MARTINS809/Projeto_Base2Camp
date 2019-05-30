@@ -18,7 +18,12 @@ public class Browsers {
     private static String seleniumHub = GlobalParameters.SELENIUM_HUB;
 
     public static WebDriver getLocalChrome(){
-        return new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("no-sandbox");
+        chromeOptions.addArguments("--allow-running-insecure-content");
+        chromeOptions.addArguments("--lang=pt-BR");
+        chromeOptions.addArguments("download.default_directory", downloadPath);
+        return new ChromeDriver(chromeOptions);
     }
 
     public static WebDriver getRemoteChrome(){
