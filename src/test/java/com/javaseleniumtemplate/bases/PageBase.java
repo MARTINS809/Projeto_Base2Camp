@@ -1,4 +1,4 @@
-package com.javaseleniumtemplate.basees;
+package com.javaseleniumtemplate.bases;
 
 import com.javaseleniumtemplate.GlobalParameters;
 import com.javaseleniumtemplate.utils.DriverFactory;

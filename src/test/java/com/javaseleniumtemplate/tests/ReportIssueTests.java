@@ -1,6 +1,6 @@
 package com.javaseleniumtemplate.tests;
 
-import com.javaseleniumtemplate.basees.TestBase;
+import com.javaseleniumtemplate.bases.TestBase;
 import com.javaseleniumtemplate.flows.LoginFlows;
 import com.javaseleniumtemplate.pages.BugReportPage;
 import com.javaseleniumtemplate.pages.MainPage;

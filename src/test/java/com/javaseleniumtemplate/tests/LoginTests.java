@@ -1,6 +1,6 @@
 package com.javaseleniumtemplate.tests;
 
-import com.javaseleniumtemplate.basees.TestBase;
+import com.javaseleniumtemplate.bases.TestBase;
 import com.javaseleniumtemplate.pages.LoginPage;
 import com.javaseleniumtemplate.pages.MainPage;
 import org.testng.Assert;

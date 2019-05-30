@@ -1,6 +1,6 @@
 package com.javaseleniumtemplate.pages;
 
-import com.javaseleniumtemplate.basees.PageBase;
+import com.javaseleniumtemplate.bases.PageBase;
 import org.openqa.selenium.By;
 
 public class BugReportPage extends PageBase {
