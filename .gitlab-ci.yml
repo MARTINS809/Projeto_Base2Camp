@@ -4,12 +4,10 @@ cache:
   paths:
     - target/
 
-build:
+build&test:
   stage: build
   script:
     - mvn dependency:go-offline
+    - mvn test
 
-test:
-  stage: test
-  script:
-    - mvn verify
+
