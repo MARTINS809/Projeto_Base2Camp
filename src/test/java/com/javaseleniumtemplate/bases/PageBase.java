@@ -46,12 +46,13 @@ public class PageBase {
         return element;
     }
 
-    //Função usada para acessar os elementos que estão dentro de um #shadow-root
-    //Ex:  WebElement root = driver.findElement(By.tagName("driver-app-shell"))---> elemento onde se encontra o shadow-root
-    //     WebElement shadowRoot = expandShadowRootElement(root); ----> pegando os elementos que estão dentro do shadow-root
-    protected WebElement expandShadowRootElement(By locator) {
-        WebElement shadowRootElement = (WebElement) javaScriptExecutor.executeScript("return arguments[0].shadowRoot", waitForElement(locator));
-        return shadowRootElement;
+    protected WebElement waitForElementByTime(By locator, int time){
+        waitUntilPageReady();
+        WebDriverWait waitTime = new WebDriverWait(driver, time);
+        waitTime.until(ExpectedConditions.presenceOfElementLocated(locator));
+        WebElement element = driver.findElement(locator);
+        waitTime.until(ExpectedConditions.elementToBeClickable(element));
+        return element;
     }
 
     protected WebElement waitForElementDisabled(By locator){
@@ -60,12 +61,12 @@ public class PageBase {
         return element;
     }
 
-    protected WebElement waitForElementByTime(By locator, int time){
-        WebDriverWait waitTime = new WebDriverWait(driver, time);
-        waitTime.until(ExpectedConditions.presenceOfElementLocated(locator));
-        WebElement element = driver.findElement(locator);
-        waitTime.until(ExpectedConditions.elementToBeClickable(element));
-        return element;
+    //Função usada para acessar os elementos que estão dentro de um #shadow-root
+    //Ex:  WebElement root = driver.findElement(By.tagName("driver-app-shell"))---> elemento onde se encontra o shadow-root
+    //     WebElement shadowRoot = expandShadowRootElement(root); ----> pegando os elementos que estão dentro do shadow-root
+    protected WebElement expandShadowRootElement(By locator) {
+        WebElement shadowRootElement = (WebElement) javaScriptExecutor.executeScript("return arguments[0].shadowRoot", waitForElement(locator));
+        return shadowRootElement;
     }
 
     protected void click(By locator){
