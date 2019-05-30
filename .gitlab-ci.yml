@@ -8,3 +8,8 @@ build:
   stage: build
   script:
     - mvn dependency:go-offline
+
+test:
+  stage: test
+  script:
+    - mvn verify
