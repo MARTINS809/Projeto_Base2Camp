@@ -16,6 +16,10 @@ public class GlobalParameters {
     public static boolean GET_SCREENSHOT_FOR_EACH_STEP;
     public static String DOWNLOAD_DEFAULT_PATH;
     public static String REPORT_PATH;
+    public static String DB_URL;
+    public static String DB_SID;
+    public static String DB_USER;
+    public static String DB_PASSWORD;
 
     private Properties properties;
 
@@ -41,5 +45,9 @@ public class GlobalParameters {
         GET_SCREENSHOT_FOR_EACH_STEP = Boolean.parseBoolean(properties.getProperty("get.screenshot.for.each.step"));
         DOWNLOAD_DEFAULT_PATH = properties.getProperty("download.defaul.path");
         REPORT_PATH = properties.getProperty("report.path");
+        DB_URL = properties.getProperty("db.url");
+        DB_SID = properties.getProperty("db.sid");
+        DB_USER = properties.getProperty("db.user");
+        DB_PASSWORD = properties.getProperty("db.password");
     }
 }
