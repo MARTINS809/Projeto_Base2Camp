@@ -3,7 +3,7 @@
     <test name="TestNgMavenTest">
         <classes>
             <class name="com.javaseleniumtemplate.tests.LoginTests"/>
-            <class name="com.javaseleniumtemplate.tests.ReportIssueTests"/>
+            <!-- <class name="com.javaseleniumtemplate.tests.ReportIssueTests"/>-->
         </classes>
     </test>
 </suite>

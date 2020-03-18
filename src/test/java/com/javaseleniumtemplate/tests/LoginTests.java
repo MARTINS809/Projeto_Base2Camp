@@ -31,7 +31,7 @@ public class LoginTests extends TestBase {
         Assert.assertEquals(usuario, mainPage.retornaUsernameDasInformacoesDeLogin());
     }
 
-    @Test
+    //@Test
     public void efetuarLoginComSucesso_SenhaRetornadaDoDB(){
         //Objects instances
         loginPage = new LoginPage();
