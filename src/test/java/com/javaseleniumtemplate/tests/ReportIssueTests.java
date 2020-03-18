@@ -23,10 +23,9 @@ public class ReportIssueTests extends TestBase {
         //Parameteres
         String usuario = "templateautomacao";
         String senha = "123456";
-        String categoria = "[All Projects] Desafio jMeter";
+        String categoria = "[All Projects] Teste";
         String resumo = "Resumo teste automático ";
         String descricao = "Descrição teste automático";
-        String caminhoArquivo = "Resources/Files/anexo_ocorrencia.jpg";
 
         //Test
         loginFlows.efetuarLogin(usuario, senha);
@@ -34,7 +33,6 @@ public class ReportIssueTests extends TestBase {
         bugReportPage.selecionarCategoria(categoria);
         bugReportPage.preencherResumo(resumo);
         bugReportPage.preencherDescricao(descricao);
-        bugReportPage.InserirAnexo(caminhoArquivo);
         bugReportPage.ClicarEmSubmitReport();
     }
 }
