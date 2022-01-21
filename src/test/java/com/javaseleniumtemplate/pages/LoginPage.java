@@ -8,7 +8,6 @@ public class LoginPage extends PageBase {
     By usernameField = By.name("username");
     By passwordField = By.name("password");
     By loginButton = By.xpath("//input[@type='submit']");
-    By mensagemErroTextArea = By.xpath("/html/body/div[2]/font");
 
     //Actions
     public void preenhcerUsuario(String usuario){
@@ -21,9 +20,5 @@ public class LoginPage extends PageBase {
 
     public void clicarEmLogin(){
         click(loginButton);
-    }
-
-    public String retornaMensagemDeErro(){
-        return getText(mensagemErroTextArea);
     }
 }

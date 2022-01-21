@@ -2,10 +2,13 @@ package com.javaseleniumtemplate.utils;
 
 import com.javaseleniumtemplate.GlobalParameters;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverFactory {
 
     public static WebDriver INSTANCE = null;
+    private static String downloadPath = GlobalParameters.DOWNLOAD_DEFAULT_PATH;
 
     public static void createInstance(){
         String browser = GlobalParameters.BROWSER_DEFAULT;
@@ -14,31 +17,19 @@ public class DriverFactory {
         if (INSTANCE==null){
             if(execution.equals("local")){
                 if(browser.equals("chrome")){
-                    INSTANCE = Browsers.getLocalChrome();
-                }else if(browser.equals("chromeHeadless")){
-                    INSTANCE = Browsers.getLocalChromeHeadless();
-                }else if(browser.equals("firefox")){
-                    INSTANCE = Browsers.getLocalFirefox();
-                }else if (browser.equals("ie")){
-                    INSTANCE = Browsers.getLocalInternetExplorer();
-                }else{
-                    try{
-                        throw new Exception("O browser informado não existe ou não é suportado pela automação");
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            }
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("no-sandbox");
+                    chromeOptions.addArguments("--allow-running-insecure-content");
+                    chromeOptions.addArguments("--lang=pt-BR");
+                    chromeOptions.addArguments("download.default_directory", downloadPath);
+                    INSTANCE = new ChromeDriver(chromeOptions);
 
-            if(execution.equals("remota")){
-                if(browser.equals("chrome")){
-                    INSTANCE = Browsers.getRemoteChrome();
                 }else if(browser.equals("chromeHeadless")){
-                    INSTANCE = Browsers.getRemoteChromeHeadless();
-                }else if(browser.equals("firefox")){
-                    INSTANCE = Browsers.getRemoteFirefox();
-                }else if (browser.equals("ie")){
-                    INSTANCE = Browsers.getRemoteInternetExplorer();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("download.default_directory", downloadPath);
+                    chromeOptions.addArguments("--headless");
+                    INSTANCE = new ChromeDriver(chromeOptions);
+
                 }else{
                     try{
                         throw new Exception("O browser informado não existe ou não é suportado pela automação");
