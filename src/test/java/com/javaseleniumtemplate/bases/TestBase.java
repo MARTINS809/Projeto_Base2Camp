@@ -1,31 +1,34 @@
 package com.javaseleniumtemplate.bases;
 
 import com.javaseleniumtemplate.GlobalParameters;
-import com.javaseleniumtemplate.utils.DriverFactory;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
+import com.javaseleniumtemplate.utils.DriverUtils;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+//import org.testng.ITestResult;
+//import org.testng.annotations.*;
 
-import java.lang.reflect.Method;
 
 public class TestBase {
-    @BeforeSuite
-    public void beforeSuite(){
+    @BeforeClass
+    public static void beforeSuite(){
         new GlobalParameters();
     }
 
-    @BeforeMethod
-    public void beforeTest(Method method){
-        DriverFactory.createInstance();
-        DriverFactory.INSTANCE.manage().window().maximize();
-        DriverFactory.INSTANCE.navigate().to(GlobalParameters.URL_DEFAULT);
+    @Before
+    public void beforeTest(){
+        DriverUtils.createInstance();
+        DriverUtils.INSTANCE.manage().window().maximize();
+        DriverUtils.INSTANCE.navigate().to(GlobalParameters.URL_DEFAULT);
     }
 
-    @AfterMethod
-    public void afterTest(ITestResult result){
-        DriverFactory.quitInstace();
+    @After
+    public void afterTest(){
+        DriverUtils.quitInstace();
     }
 
-    @AfterSuite
-    public void afterSuite(){
+    @AfterClass
+    public static void afterSuite(){
     }
 }

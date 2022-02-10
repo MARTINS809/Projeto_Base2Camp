@@ -1,7 +1,7 @@
 package com.javaseleniumtemplate.bases;
 
 import com.javaseleniumtemplate.GlobalParameters;
-import com.javaseleniumtemplate.utils.DriverFactory;
+import com.javaseleniumtemplate.utils.DriverUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -16,8 +16,8 @@ public class PageBase {
 
     //Construtor
     public PageBase(){
-        wait = new WebDriverWait (DriverFactory.INSTANCE, GlobalParameters.TIMEOUT_DEFAULT);
-        driver = DriverFactory.INSTANCE;
+        wait = new WebDriverWait (DriverUtils.INSTANCE, GlobalParameters.TIMEOUT_DEFAULT);
+        driver = DriverUtils.INSTANCE;
         javaScriptExecutor = (JavascriptExecutor) driver;
     }
 
@@ -112,11 +112,11 @@ public class PageBase {
 
     //Default actions
     public void refresh(){
-        DriverFactory.INSTANCE.navigate().refresh();
+        DriverUtils.INSTANCE.navigate().refresh();
     }
 
     public void navigateTo(String url){
-        DriverFactory.INSTANCE.navigate().to(url);
+        DriverUtils.INSTANCE.navigate().to(url);
     }
 
     public void openNewTab(){

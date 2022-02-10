@@ -7,13 +7,15 @@ public class LoginFlows {
     LoginPage loginPage;
 
     public LoginFlows(){
+        //Page and Steps Objects
         loginPage = new LoginPage();
     }
 
     //Flows
-    public void efetuarLogin(String username, String password){
-        loginPage.preenhcerUsuario(username);
-        loginPage.preencherSenha(password);
+    public void efetuarLogin(String usuario, String senha){
+        loginPage.clicarEmAceitarCookies();
+        loginPage.preenhcerUsuario(usuario);
+        loginPage.preencherSenha(senha);
         loginPage.clicarEmLogin();
     }
 }

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class DriverFactory {
+public class DriverUtils {
 
     public static WebDriver INSTANCE = null;
     private static String downloadPath = GlobalParameters.DOWNLOAD_DEFAULT_PATH;
