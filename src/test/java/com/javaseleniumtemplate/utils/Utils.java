@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //import org.apache.commons.io.FileUtils;
-import org.testng.ITestResult;
+//import org.testng.ITestResult;
 
 public class Utils {
 

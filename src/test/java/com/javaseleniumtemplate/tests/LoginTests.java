@@ -4,8 +4,6 @@ import com.javaseleniumtemplate.bases.TestBase;
 import com.javaseleniumtemplate.pages.LoginPage;
 import org.junit.Assert;
 import org.junit.Test;
-//import org.testng.Assert;
-//import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
     //Objects
@@ -13,16 +11,15 @@ public class LoginTests extends TestBase {
 
     //Tests
     @Test
-    public void efetuarLoginComSucesso(){
+    public void efetuarLoginEmailInvalido(){
 
         //Objects instances
         loginPage = new LoginPage();
-        //mainPage = new MainPage();
 
         //Parameteres
         String usuario = "emailerrado@email.com";
         String senha = "123456";
-        String mensagemErroEsperada = "E-mail ou senha inválidos.";
+        String mensagemErroEsperada = "E-mail ou senha inv";
 
         //Test
         loginPage.clicarEmAceitarCookies();
@@ -30,6 +27,6 @@ public class LoginTests extends TestBase {
         loginPage.preencherSenha(senha);
         loginPage.clicarEmLogin();
 
-        Assert.assertEquals(mensagemErroEsperada, loginPage.retornaMensagemErroLogin());
+        Assert.assertTrue(loginPage.retornaMensagemErroLogin().contains(mensagemErroEsperada));
     }
 }
