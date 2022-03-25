@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 //import org.testng.ITestResult;
 //import org.testng.annotations.*;
 
@@ -24,11 +26,8 @@ public class TestBase {
     }
 
     @After
-    public void afterTest(){
-        DriverUtils.quitInstace();
-    }
-
+   public void afterTest(){DriverUtils.quitInstace();}
     @AfterClass
     public static void afterSuite(){
-    }
+   }
 }
