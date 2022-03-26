@@ -44,6 +44,12 @@ public class PageBase {
         return element;
     }
 
+    protected void clear(By locator){
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        WebElement element = driver.findElement(locator);
+        element.clear();
+    }
+
     protected void click(By locator){
         WebDriverException possibleWebDriverException = null;
         StopWatch timeOut = new StopWatch();
