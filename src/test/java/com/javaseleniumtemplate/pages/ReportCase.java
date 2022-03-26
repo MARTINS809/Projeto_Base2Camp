@@ -7,7 +7,7 @@ public class ReportCase extends PageBase {
     //Mapping
     By clickReportCaseLink= By.linkText("Relatar Caso");
     By clickSelectProjectButton = By.cssSelector("input[value='Selecionar Projeto']");
-    By messageSeeCaseLink = By.linkText("Ver Casos");
+    By messageReportedCaseLabel = By.cssSelector("div[align='center']");
     By emptyCategoryErrorMessagelabel = By.xpath("//p[contains(text(),'Categoria')]");
     By emptyResumeErrorMessageLabel = By.xpath("//p[contains(text(),'Resumo')]");
     By emptyDescriptionErrorMessageLabel = By.xpath("//p[contains(text(),'Descrição')]");
@@ -17,7 +17,7 @@ public class ReportCase extends PageBase {
 
     public void clicarEmSelectProject(){click(clickSelectProjectButton);}
 
-    public String retornaMensagemVerCasos(){return getText(messageSeeCaseLink);}
+    public String menssagenConfirmandoCasoRelatado(){return getText(messageReportedCaseLabel);}
 
     public String retornaMensagemErroCategoriaNaoPreechida (){return getText(emptyCategoryErrorMessagelabel);}
 

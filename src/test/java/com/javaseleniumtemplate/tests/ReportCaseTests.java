@@ -33,9 +33,8 @@ public class ReportCaseTests extends TestBase {
         String usuario = "felipe.martins";
         String senha = "Base2Camp";
         String resumo = "Teste Projeto Base2Camp2";
-        String descricaoTeste =   ("Passo a passo de como execultar o Teste");
-        String mensagemConfirmacaoCasoRelatado = "Ver Casos";
-
+        String descricaoTeste =   ("Passo a passo de como executar o Teste");
+        String mensagemConfirmacaoCasoRelatado = "Operação realizada com sucesso.";
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
@@ -47,9 +46,7 @@ public class ReportCaseTests extends TestBase {
         completeCaseReport.selecionarParaContinuarReportando();
         completeCaseReport.clicarEnviarRelatorio();
 
-
-
-        Assert.assertEquals(reportCase.retornaMensagemVerCasos(),mensagemConfirmacaoCasoRelatado);
+        Assert.assertTrue(completeCaseReport.menssagenConfirmandoCasoRelatado().contains(mensagemConfirmacaoCasoRelatado));
     }
 
     @Test
@@ -60,14 +57,12 @@ public class ReportCaseTests extends TestBase {
         reportCase = new ReportCase();
         completeCaseReport = new CompleteCaseReport();
 
-
         //Parameteres
         String usuario = "felipe.martins";
         String senha = "Base2Camp";
         String resumo = "Teste Projeto Base2Camp2";
-        String descricaoTeste = "Passo a passo de como execultar o Teste";
+        String descricaoTeste = "Passo a passo de como executar o Teste";
         String mensagemErroPreencherCategoria = "'Categoria'";
-
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
@@ -91,13 +86,11 @@ public class ReportCaseTests extends TestBase {
         reportCase = new ReportCase();
         completeCaseReport = new CompleteCaseReport();
 
-
         //Parameteres
         String usuario = "felipe.martins";
         String senha = "Base2Camp";
-        String descricaoTeste = "Passo a passo de como execultar o Teste";
+        String descricaoTeste = "Passo a passo de como executar o Teste";
         String mensagemErroPreencherResumo = "'Resumo'";
-
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
@@ -121,13 +114,11 @@ public class ReportCaseTests extends TestBase {
         reportCase = new ReportCase();
         completeCaseReport = new CompleteCaseReport();
 
-
         //Parameteres
         String usuario = "felipe.martins";
         String senha = "Base2Camp";
         String resumo= "Teste Projeto Base2Camp2";
         String mensagemErroPreencherResumo = "'Descrição'";
-
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
@@ -139,8 +130,6 @@ public class ReportCaseTests extends TestBase {
         completeCaseReport.selecionarVisibilidadePrivada();
         completeCaseReport.selecionarParaContinuarReportando();
         completeCaseReport.clicarEnviarRelatorio();
-
-        System.out.println(completeCaseReport.retornaMensagemDescricaoNaoPreenchida());
 
         Assert.assertTrue(completeCaseReport.retornaMensagemDescricaoNaoPreenchida().contains(mensagemErroPreencherResumo));
     }
