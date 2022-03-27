@@ -2,8 +2,10 @@ package com.javaseleniumtemplate.tests;
 
 import com.javaseleniumtemplate.bases.TestBase;
 import com.javaseleniumtemplate.flows.LoginFlows;
-import com.javaseleniumtemplate.pages.CompleteCaseReport;
+import com.javaseleniumtemplate.pages.CompleteCaseReportPage;
 
+import com.javaseleniumtemplate.pages.LoginPage;
+import com.javaseleniumtemplate.pages.Navigatepage;
 import com.javaseleniumtemplate.pages.ReportCase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,22 +14,23 @@ public class ReportCaseTests extends TestBase {
 
 
     //Objects
-
     LoginFlows loginFlows;
     ReportCase reportCase;
-    CompleteCaseReport completeCaseReport;
+    CompleteCaseReportPage completeCaseReportPage;
+    LoginPage loginPage;
+    Navigatepage navigatepage;
 
 
     //Tests
-
     @Test
     public void relatarCaso(){
 
         //Objects instances
         loginFlows = new LoginFlows();
         reportCase = new ReportCase();
-        completeCaseReport = new CompleteCaseReport();
-
+        completeCaseReportPage = new CompleteCaseReportPage();
+        loginPage = new LoginPage();
+        navigatepage = new Navigatepage();
 
         //Parameteres
         String usuario = "felipe.martins";
@@ -35,19 +38,24 @@ public class ReportCaseTests extends TestBase {
         String resumo = "Teste Projeto Base2Camp2";
         String descricaoTeste =   ("Passo a passo de como executar o Teste");
         String mensagemConfirmacaoCasoRelatado = "Operação realizada com sucesso.";
+        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
+
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
-        reportCase.clicarEmRelatarCaso();
+        navigatepage.clicarEmRelatarCaso();
         reportCase.clicarEmSelectProject();
-        completeCaseReport.preencherCamposObrigatorios(resumo,descricaoTeste);
-        completeCaseReport.atribuirAUsuario();
-        completeCaseReport.selecionarVisibilidadePrivada();
-        completeCaseReport.selecionarParaContinuarReportando();
-        completeCaseReport.clicarEnviarRelatorio();
+        completeCaseReportPage.preencherCamposObrigatorios(resumo,descricaoTeste);
+        completeCaseReportPage.atribuirAUsuario();
+        completeCaseReportPage.selecionarVisibilidadePrivada();
+        completeCaseReportPage.selecionarParaContinuarReportando();
+        completeCaseReportPage.clicarEnviarRelatorio();
 
-        Assert.assertTrue(completeCaseReport.menssagenConfirmandoCasoRelatado().contains(mensagemConfirmacaoCasoRelatado));
+
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
+        Assert.assertTrue(completeCaseReportPage.menssagenConfirmandoCasoRelatado().contains(mensagemConfirmacaoCasoRelatado));
     }
+
 
     @Test
     public void relatarCasoSemPeecherCategoria(){
@@ -55,7 +63,10 @@ public class ReportCaseTests extends TestBase {
         //Objects instances
         loginFlows = new LoginFlows();
         reportCase = new ReportCase();
-        completeCaseReport = new CompleteCaseReport();
+        completeCaseReportPage = new CompleteCaseReportPage();
+        loginPage = new LoginPage();
+        navigatepage = new Navigatepage();
+
 
         //Parameteres
         String usuario = "felipe.martins";
@@ -63,20 +74,24 @@ public class ReportCaseTests extends TestBase {
         String resumo = "Teste Projeto Base2Camp2";
         String descricaoTeste = "Passo a passo de como executar o Teste";
         String mensagemErroPreencherCategoria = "'Categoria'";
+        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
-        reportCase.clicarEmRelatarCaso();
+        navigatepage.clicarEmRelatarCaso();
         reportCase.clicarEmSelectProject();
-        completeCaseReport.resumoDoTeste(resumo);
-        completeCaseReport.descricaoDoTeste(descricaoTeste);
-        completeCaseReport.atribuirAUsuario();
-        completeCaseReport.selecionarVisibilidadePrivada();
-        completeCaseReport.selecionarParaContinuarReportando();
-        completeCaseReport.clicarEnviarRelatorio();
+        completeCaseReportPage.resumoDoTeste(resumo);
+        completeCaseReportPage.descricaoDoTeste(descricaoTeste);
+        completeCaseReportPage.atribuirAUsuario();
+        completeCaseReportPage.selecionarVisibilidadePrivada();
+        completeCaseReportPage.selecionarParaContinuarReportando();
+        completeCaseReportPage.clicarEnviarRelatorio();
 
-        Assert.assertTrue(completeCaseReport.retornaMensagemErroCategoriaNaoPreechida().contains(mensagemErroPreencherCategoria));
+
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
+        Assert.assertTrue(completeCaseReportPage.retornaMensagemErroCategoriaNaoPreechida().contains(mensagemErroPreencherCategoria));
     }
+
 
     @Test
     public void relatarCasoSemPeecherResumo(){
@@ -84,27 +99,33 @@ public class ReportCaseTests extends TestBase {
         //Objects instances
         loginFlows = new LoginFlows();
         reportCase = new ReportCase();
-        completeCaseReport = new CompleteCaseReport();
+        completeCaseReportPage = new CompleteCaseReportPage();
+        loginPage = new LoginPage();
+        navigatepage = new Navigatepage();
 
         //Parameteres
         String usuario = "felipe.martins";
         String senha = "Base2Camp";
         String descricaoTeste = "Passo a passo de como executar o Teste";
         String mensagemErroPreencherResumo = "'Resumo'";
+        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
-        reportCase.clicarEmRelatarCaso();
+        navigatepage.clicarEmRelatarCaso();
         reportCase.clicarEmSelectProject();
-        completeCaseReport.selecionarCategoria();
-        completeCaseReport.descricaoDoTeste(descricaoTeste);
-        completeCaseReport.atribuirAUsuario();
-        completeCaseReport.selecionarVisibilidadePrivada();
-        completeCaseReport.selecionarParaContinuarReportando();
-        completeCaseReport.clicarEnviarRelatorio();
+        completeCaseReportPage.selecionarCategoria();
+        completeCaseReportPage.descricaoDoTeste(descricaoTeste);
+        completeCaseReportPage.atribuirAUsuario();
+        completeCaseReportPage.selecionarVisibilidadePrivada();
+        completeCaseReportPage.selecionarParaContinuarReportando();
+        completeCaseReportPage.clicarEnviarRelatorio();
 
-        Assert.assertTrue(completeCaseReport.retornaMensagemErroResumoNaoPreesnchido().contains(mensagemErroPreencherResumo));
+
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
+        Assert.assertTrue(completeCaseReportPage.retornaMensagemErroResumoNaoPreesnchido().contains(mensagemErroPreencherResumo));
     }
+
 
     @Test
     public void relatarCasoSemPeecherDescricao(){
@@ -112,28 +133,31 @@ public class ReportCaseTests extends TestBase {
         //Objects instances
         loginFlows = new LoginFlows();
         reportCase = new ReportCase();
-        completeCaseReport = new CompleteCaseReport();
+        completeCaseReportPage = new CompleteCaseReportPage();
+        loginPage = new LoginPage();
+        navigatepage = new Navigatepage();
 
         //Parameteres
         String usuario = "felipe.martins";
         String senha = "Base2Camp";
         String resumo= "Teste Projeto Base2Camp2";
         String mensagemErroPreencherResumo = "'Descrição'";
+        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
 
         //Test
         loginFlows.efetuarLogin(usuario,senha);
-        reportCase.clicarEmRelatarCaso();
+        navigatepage.clicarEmRelatarCaso();
         reportCase.clicarEmSelectProject();
-        completeCaseReport.selecionarCategoria();
-        completeCaseReport.resumoDoTeste(resumo);
-        completeCaseReport.atribuirAUsuario();
-        completeCaseReport.selecionarVisibilidadePrivada();
-        completeCaseReport.selecionarParaContinuarReportando();
-        completeCaseReport.clicarEnviarRelatorio();
+        completeCaseReportPage.selecionarCategoria();
+        completeCaseReportPage.resumoDoTeste(resumo);
+        completeCaseReportPage.atribuirAUsuario();
+        completeCaseReportPage.selecionarVisibilidadePrivada();
+        completeCaseReportPage.selecionarParaContinuarReportando();
+        completeCaseReportPage.clicarEnviarRelatorio();
 
-        Assert.assertTrue(completeCaseReport.retornaMensagemDescricaoNaoPreenchida().contains(mensagemErroPreencherResumo));
+        //Colocar mais um assert para confirmação da pagina de relater caso.
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
+        Assert.assertTrue(completeCaseReportPage.retornaMensagemDescricaoNaoPreenchida().contains(mensagemErroPreencherResumo));
     }
-
-
 
 }
