@@ -139,26 +139,26 @@ public class ReportCaseTests extends TestBase {
         navigatepage = new NavigatePage();
 
         //Parameteres
-        String usuario = "felipe.martins";
-        String senha = "Base2Camp";
-        String resumo= "Teste Projeto Base2Camp2";
-        String mensagemErroPreencherResumo = "'Descrição'";
-        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
+        String username = "felipe.martins";
+        String password = "Base2Camp";
+        String resume = "Teste Projeto Base2Camp2";
+        String errorMenssage = "'Descrição'";
+        String loginConfirmation = "(Felipe Martins do Nascimeto - gerente)";
 
         //Test
-        loginFlows.efetuarLogin(usuario,senha);
+        loginFlows.efetuarLogin(username,password);
         navigatepage.clicarEmRelatarCaso();
         reportCase.clicarEmSelectProject();
         completeCaseReportPage.selecionarCategoria();
-        completeCaseReportPage.resumoDoTeste(resumo);
+        completeCaseReportPage.resumoDoTeste(resume);
         completeCaseReportPage.atribuirAUsuario();
         completeCaseReportPage.selecionarVisibilidadePrivada();
         completeCaseReportPage.selecionarParaContinuarReportando();
         completeCaseReportPage.clicarEnviarRelatorio();
 
         //Colocar mais um assert para confirmação da pagina de relater caso.
-        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
-        Assert.assertTrue(completeCaseReportPage.retornaMensagemDescricaoNaoPreenchida().contains(mensagemErroPreencherResumo));
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),loginConfirmation);
+        Assert.assertTrue(completeCaseReportPage.retornaMensagemDescricaoNaoPreenchida().contains(errorMenssage));
     }
 
 }

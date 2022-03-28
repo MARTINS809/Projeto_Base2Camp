@@ -23,14 +23,14 @@ public class LoginTests extends TestBase {
         loginFlows = new LoginFlows();
 
         //Parameteres
-        String usuarioInvalido = "felipe";
-        String senha = "Base2Camp";
-        String mensagemErroEsperada = "Your account may be disabled or blocked or the username/password you entered is incorrect.";
+        String invalidUsername = "felipe";
+        String password = "Base2Camp";
+        String expectedErrorMenssage = "Your account may be disabled or blocked or the username/password you entered is incorrect.";
 
         //Test
-        loginFlows.efetuarLogin(usuarioInvalido,senha);
+        loginFlows.efetuarLogin(invalidUsername,password);
 
-        Assert.assertEquals(loginPage.retornaMensagemErroLogin(),mensagemErroEsperada);
+        Assert.assertEquals(loginPage.retornaMensagemErroLogin(),expectedErrorMenssage);
     }
 
     @Test
@@ -41,16 +41,16 @@ public class LoginTests extends TestBase {
         loginFlows = new LoginFlows();
 
         //Parameteres
-        String usuario = "felipe.martins";
-        String senha = "Base2Camp";
-        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
+        String username = "felipe.martins";
+        String password = "Base2Camp";
+        String loginConfirmationMenssage = "(Felipe Martins do Nascimeto - gerente)";
 
 
         //Test
-        loginFlows.efetuarLogin(usuario,senha);
+        loginFlows.efetuarLogin(username,password);
 
 
-        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),loginConfirmationMenssage);
     }
 
 

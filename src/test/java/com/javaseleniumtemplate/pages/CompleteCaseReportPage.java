@@ -14,9 +14,10 @@ public class CompleteCaseReportPage extends ReportCase {
     By platformField = By.id("plaform");
     By osField = By.id("os");
     By osBildField = By.id("os_build");
-    By felipeMartinsComboBox = By.xpath("//option[text()='felipe.martins']");
+    By selectUserNameComboBox = By.xpath("//option[text()='felipe.martins']");
     By summaryField = By.name("summary");
     By descriptionField = By.name("description");
+
     By stepToReproduceField = By.name("steps_to_reproduce");
     By additionalInfoField = By.name("additional_info");
     By ufileButton = By.id("ufile[]");
@@ -53,7 +54,7 @@ public class CompleteCaseReportPage extends ReportCase {
 
     public void preencherVersãoDoSO(String versaoSO){sendKeys(osBildField,versaoSO);}
 
-    public void atribuirAUsuario(){click(felipeMartinsComboBox);}
+    public void atribuirAUsuario(){click(selectUserNameComboBox);}
 
     public void resumoDoTeste(String resumo){sendKeys(summaryField, resumo);}
 

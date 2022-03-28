@@ -29,14 +29,14 @@ public class BuscarCasoTests extends TestBase {
 
 
         //Parameteres
-        String usuario = "felipe.martins";
+        String username = "felipe.martins";
         String senha = "Base2Camp";
         String numberSeach = "9068";
 
 
 
         //Test
-        loginFlows.efetuarLogin(usuario, senha);
+        loginFlows.efetuarLogin(username, senha);
         navigatepage.preencherBusca(numberSeach);
         navigatepage.clicarIrPara();
 
@@ -52,14 +52,14 @@ public class BuscarCasoTests extends TestBase {
         navigatepage = new NavigatePage();
 
         //Parameteres
-        String usuario = "felipe.martins";
-        String senha = "Base2Camp";
+        String username = "felipe.martins";
+        String password = "Base2Camp";
         String numberSeach = "9062228";
 
 
 
         //Test
-        loginFlows.efetuarLogin(usuario, senha);
+        loginFlows.efetuarLogin(username, password);
         navigatepage.preencherBusca(numberSeach);
         navigatepage.clicarIrPara();
 

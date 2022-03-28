@@ -27,23 +27,23 @@ public class ViewCasesTests extends TestBase {
 
 
         //Parameteres
-        String usuario = "felipe.martins";
-        String senha = "Base2Camp";
-        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
-        String mensagemConfirmacaoVerCaso = "Visualizando Casos";
-        String mensagemConfirmacaoUsuarioAtribuido = "felipe.martins";
+        String username = "felipe.martins";
+        String password = "Base2Camp";
+        String loginConfirmation = "(Felipe Martins do Nascimeto - gerente)";
+        String viewCaseConfirmation = "Visualizando Casos";
+        String assignedUserConfirmation = "felipe.martins";
 
         //Test
-        loginFlows.efetuarLogin(usuario,senha);
+        loginFlows.efetuarLogin(username,password);
         navigatepage.clicarEmVerCaso();
         viewsCasesPage.clicarAtribuidoA();
         viewsCasesPage.filtrarUsuario();
         viewsCasesPage.clicarEmFiltrar();
 
 
-        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
-        Assert.assertEquals(viewsCasesPage.confirmarUsuarioAtribuido(),mensagemConfirmacaoUsuarioAtribuido);
-        Assert.assertTrue(navigatepage.confirmaPaginaVerCaso().contains(mensagemConfirmacaoVerCaso));
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),loginConfirmation);
+        Assert.assertEquals(viewsCasesPage.confirmarUsuarioAtribuido(),assignedUserConfirmation);
+        Assert.assertTrue(navigatepage.confirmaPaginaVerCaso().contains(viewCaseConfirmation));
 
     }
 
@@ -57,14 +57,14 @@ public class ViewCasesTests extends TestBase {
 
 
         //Parameteres
-        String usuario = "felipe.martins";
-        String senha = "Base2Camp";
+        String username = "felipe.martins";
+        String password = "Base2Camp";
         String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
-        String mensagemConfirmacaoVerCaso = "Visualizando Casos";
-        String mensagemConfirmacaoDaCategoria = "Teste Felipe";
+        String viewCaseConfirmation = "Visualizando Casos";
+        String assignedUserConfirmation = "Teste Felipe";
 
         //Test
-        loginFlows.efetuarLogin(usuario,senha);
+        loginFlows.efetuarLogin(username,password);
         navigatepage.clicarEmVerCaso();
         viewsCasesPage.clicarEmFitrarCategoria();
         viewsCasesPage.clicarEmTesteFalipe();
@@ -73,8 +73,8 @@ public class ViewCasesTests extends TestBase {
         System.out.println(viewsCasesPage.confirmarCategoriaSelecionada());
 
         Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
-        Assert.assertEquals(viewsCasesPage.confirmarCategoriaSelecionada(),mensagemConfirmacaoDaCategoria);
-        Assert.assertTrue(navigatepage.confirmaPaginaVerCaso().contains(mensagemConfirmacaoVerCaso));
+        Assert.assertEquals(viewsCasesPage.confirmarCategoriaSelecionada(),assignedUserConfirmation);
+        Assert.assertTrue(navigatepage.confirmaPaginaVerCaso().contains(viewCaseConfirmation));
 
     }
 
@@ -88,22 +88,22 @@ public class ViewCasesTests extends TestBase {
 
 
         //Parameteres
-        String usuario = "felipe.martins";
-        String senha = "Base2Camp";
-        String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
-        String mensagemConfirmacaoVerCaso = "Visualizando Casos";
-        String mensagemConfirmacaoGravidade = "grande";
+        String username = "felipe.martins";
+        String password = "Base2Camp";
+        String loginConfirmation = "(Felipe Martins do Nascimeto - gerente)";
+        String viewCaseConfirmation = "Visualizando Casos";
+        String assignedUserConfirmation = "grande";
 
         //Test
-        loginFlows.efetuarLogin(usuario,senha);
+        loginFlows.efetuarLogin(username,password);
         navigatepage.clicarEmVerCaso();
         viewsCasesPage.clicarEmFitrarGravidade();
         viewsCasesPage.clicarEmGrande();
         viewsCasesPage.clicarEmFiltrar();
 
-        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
-        Assert.assertEquals(viewsCasesPage.confirmarGravidadeSelecionada(),mensagemConfirmacaoGravidade);
-        Assert.assertTrue(navigatepage.confirmaPaginaVerCaso().contains(mensagemConfirmacaoVerCaso));
+        Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),loginConfirmation);
+        Assert.assertEquals(viewsCasesPage.confirmarGravidadeSelecionada(),assignedUserConfirmation);
+        Assert.assertTrue(navigatepage.confirmaPaginaVerCaso().contains(viewCaseConfirmation));
 
     }
 
