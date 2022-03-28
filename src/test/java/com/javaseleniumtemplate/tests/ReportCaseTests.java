@@ -5,7 +5,7 @@ import com.javaseleniumtemplate.flows.LoginFlows;
 import com.javaseleniumtemplate.pages.CompleteCaseReportPage;
 
 import com.javaseleniumtemplate.pages.LoginPage;
-import com.javaseleniumtemplate.pages.Navigatepage;
+import com.javaseleniumtemplate.pages.NavigatePage;
 import com.javaseleniumtemplate.pages.ReportCase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class ReportCaseTests extends TestBase {
     ReportCase reportCase;
     CompleteCaseReportPage completeCaseReportPage;
     LoginPage loginPage;
-    Navigatepage navigatepage;
+    NavigatePage navigatepage;
 
 
     //Tests
@@ -30,13 +30,13 @@ public class ReportCaseTests extends TestBase {
         reportCase = new ReportCase();
         completeCaseReportPage = new CompleteCaseReportPage();
         loginPage = new LoginPage();
-        navigatepage = new Navigatepage();
+        navigatepage = new NavigatePage();
 
         //Parameteres
         String usuario = "felipe.martins";
         String senha = "Base2Camp";
         String resumo = "Teste Projeto Base2Camp2";
-        String descricaoTeste =   ("Passo a passo de como executar o Teste");
+        String descricaoTeste = "Passo a passo de como executar o Teste";
         String mensagemConfirmacaoCasoRelatado = "Operação realizada com sucesso.";
         String mensagemConfirmacaoLoginEsperada = "(Felipe Martins do Nascimeto - gerente)";
 
@@ -54,6 +54,7 @@ public class ReportCaseTests extends TestBase {
 
         Assert.assertEquals(loginPage.retornaMensagemConfirmLogin(),mensagemConfirmacaoLoginEsperada);
         Assert.assertTrue(completeCaseReportPage.menssagenConfirmandoCasoRelatado().contains(mensagemConfirmacaoCasoRelatado));
+
     }
 
 
@@ -65,7 +66,7 @@ public class ReportCaseTests extends TestBase {
         reportCase = new ReportCase();
         completeCaseReportPage = new CompleteCaseReportPage();
         loginPage = new LoginPage();
-        navigatepage = new Navigatepage();
+        navigatepage = new NavigatePage();
 
 
         //Parameteres
@@ -101,7 +102,7 @@ public class ReportCaseTests extends TestBase {
         reportCase = new ReportCase();
         completeCaseReportPage = new CompleteCaseReportPage();
         loginPage = new LoginPage();
-        navigatepage = new Navigatepage();
+        navigatepage = new NavigatePage();
 
         //Parameteres
         String usuario = "felipe.martins";
@@ -135,7 +136,7 @@ public class ReportCaseTests extends TestBase {
         reportCase = new ReportCase();
         completeCaseReportPage = new CompleteCaseReportPage();
         loginPage = new LoginPage();
-        navigatepage = new Navigatepage();
+        navigatepage = new NavigatePage();
 
         //Parameteres
         String usuario = "felipe.martins";

@@ -3,19 +3,19 @@ package com.javaseleniumtemplate.tests;
 import com.javaseleniumtemplate.bases.TestBase;
 import com.javaseleniumtemplate.flows.LoginFlows;
 import com.javaseleniumtemplate.pages.LoginPage;
-import com.javaseleniumtemplate.pages.Navigatepage;
+import com.javaseleniumtemplate.pages.NavigatePage;
 import com.javaseleniumtemplate.pages.ViewsCasesPage;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ViewCasesTest extends TestBase {
+public class ViewCasesTests extends TestBase {
 
 
     //Objects
     LoginPage loginPage;
     LoginFlows loginFlows;
     ViewsCasesPage viewsCasesPage;
-    Navigatepage navigatepage;
+    NavigatePage navigatepage;
 
     @Test
     public void filterTestCaseByAssignment() {
@@ -23,7 +23,7 @@ public class ViewCasesTest extends TestBase {
         loginPage = new LoginPage();
         loginFlows = new LoginFlows();
         viewsCasesPage = new ViewsCasesPage();
-        navigatepage = new Navigatepage();
+        navigatepage = new NavigatePage();
 
 
         //Parameteres
@@ -53,7 +53,7 @@ public class ViewCasesTest extends TestBase {
         loginPage = new LoginPage();
         loginFlows = new LoginFlows();
         viewsCasesPage = new ViewsCasesPage();
-        navigatepage = new Navigatepage();
+        navigatepage = new NavigatePage();
 
 
         //Parameteres
@@ -84,7 +84,7 @@ public class ViewCasesTest extends TestBase {
         loginPage = new LoginPage();
         loginFlows = new LoginFlows();
         viewsCasesPage = new ViewsCasesPage();
-        navigatepage = new Navigatepage();
+        navigatepage = new NavigatePage();
 
 
         //Parameteres
